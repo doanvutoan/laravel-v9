@@ -54,10 +54,10 @@ class LoginRequest extends FormRequest
         }
         //add guard into user login
         foreach (auth()->user()->guards as $item){
-            Auth::guard('web')->attempt($this->only('email', 'password'), $this->boolean('remember'));
+            Auth::guard($item->guard_name)->attempt($this->only('email', 'password'), $this->boolean('remember'));
         }
-
-        Auth::guard('admin')->loginUsingId(2, true);
+//        //option 2
+//        Auth::guard('admin')->loginUsingId(2, true);
 
         RateLimiter::clear($this->throttleKey());
     }

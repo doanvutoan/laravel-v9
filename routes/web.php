@@ -21,7 +21,6 @@ Route::middleware(['auth:web'])
     ->name('web.')
     ->group(function () {
         Route::get('/dashboard', function () {
-            dump(auth());
             return view('dashboard1');
         })->name('dashboard');
     });

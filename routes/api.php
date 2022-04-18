@@ -14,6 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/token', function (Request $request) {
+    $user = \App\Models\User::where('email', $request['email'])->firstOrFail();
+    if (!$user || !\Illuminate\Support\Facades\Hash::check($request->password, $user->password)) {
+        return response()->json([
+            'message' => 'Invalid login details'
+        ], 401);
+    }
+
+    $token = $user->createToken('api_token')->plainTextToken;
+    return response([
+        'user' => $user,
+        'token' => $token
+    ], 200);
+})->name('token');
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/remove-token', function (Request $request) {
+        $request->user()->currentAccessToken()->delete();
+    });
 });

@@ -19,4 +19,13 @@
 - Thêm file route thì edit file providers/routeServiceProvider
 - Cấu hình guard thì edit config/auth
 - Đăng nhập nhiều user với nhiều guard đều chạy được
+## Thêm phần vuejs
+- Cài đặt các gói vue, vuex, vue-loader, vue-router, axios
+- Tạo api laravel sử dụng sanctum
+- router/api.php dùng chung cho việc đăng ký lấy token
+- token sẽ tự động login để lấy user
+- vue/store dùng làm nơi chứa sử dụng chung mọi nơi
+- vue/view dùng store dispatch lên store
+- vue/store dùng actions function hứng param truyền đến
+- sử dụng axios để pass crf token laravel
 - 

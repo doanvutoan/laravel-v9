@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Laravel\Sanctum\Sanctum;
 
 class LoginRequest extends FormRequest
 {
@@ -56,6 +57,7 @@ class LoginRequest extends FormRequest
         foreach (auth()->user()->guards as $item){
             Auth::guard($item->guard_name)->attempt($this->only('email', 'password'), $this->boolean('remember'));
         }
+
 //        //option 2
 //        Auth::guard('admin')->loginUsingId(2, true);
 

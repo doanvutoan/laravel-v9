@@ -1,4 +1,4 @@
 <template>
+  <div>hello vue (app)</div>
   <router-view></router-view>
-  <div>hello vue</div>
 </template>

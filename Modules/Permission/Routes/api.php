@@ -1,6 +1,5 @@
 <?php
-
-use Illuminate\Http\Request;
+use \Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,10 +11,21 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+//register token api
+
+
 //middleware('auth:api')
-Route::prefix('permission')->group(function () {
-    Route::get('/users', function (Request $request) {
-        dump('hello work');
-        return $request->user();
+Route::prefix('permission')
+    ->name('permission.')
+    ->group(function () {
+
+        Route::middleware('auth:sanctum')->group(function () {
+            Route::get('/info',function (Request $request){
+                //auto login auth yes
+                dump($request->user());
+                dump(auth()->user());
+            });
+        });
+
     });
-});

@@ -28,4 +28,9 @@
 - vue/view dùng store dispatch lên store
 - vue/store dùng actions function hứng param truyền đến
 - sử dụng axios để pass crf token laravel
-- 
+
+- Cài đặt giao diện Tailwindcss vue và mix css
+- chạy riêng xuất file css: npx tailwindcss -i .\Resources\assets\sass\input.css -o .\Resources\assets\sass\output.css --watch
+- form login kèm theo hiển thị error giao diện
+
+

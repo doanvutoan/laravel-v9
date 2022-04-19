@@ -17,12 +17,20 @@ const store = createStore({
           commit("setUser", data);
           return data;
         });
+    },
+    logout({commit}){
+      return axiosClient.post('/remove-token')
+        .then((res) => {
+          commit("logout");
+          return res;
+        })
     }
   },
   mutations: {
-    logout: state => {
+    logout: (state) => {
       state.user.data = {};
       state.user.token = null;
+      sessionStorage.removeItem('TOKEN');
     },
     setUser: (state, userData) => {
       state.user.token = userData.token;

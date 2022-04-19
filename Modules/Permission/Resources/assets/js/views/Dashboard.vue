@@ -1,13 +1,7 @@
 <template>
-<h1>Dashboard</h1>
+  <PageComponent title="Dashboard">day la dashboard</PageComponent>
 </template>
 
-<script>
-export default {
-  name: "Dashboard"
-}
+<script setup>
+import PageComponent from "../components/PageComponent";
 </script>
-
-<style scoped>
-
-</style>

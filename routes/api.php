@@ -30,7 +30,10 @@ Route::post('/token', function (Request $request) {
 })->name('token');
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/remove-token', function (Request $request) {
-        $request->user()->currentAccessToken()->delete();
+    Route::post('/remove-token', function (Request $request) {
+        //option 2: not found function currentAccessToken
+        $model = \Laravel\Sanctum\Sanctum::$personalAccessTokenModel;
+        $token = $model::findToken($request->bearerToken());
+        $request->user()->tokens()->where('id',$token->id)->delete();
     });
 });

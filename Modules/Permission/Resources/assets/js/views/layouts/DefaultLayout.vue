@@ -114,6 +114,7 @@ import {useRouter} from 'vue-router';
 const navigation = [
   {name: 'Dashboard', to: {name: 'Dashboard'}},
   {name: 'Notify', to: {name: 'Notify'}},
+  {name: 'Guard', to: {name: 'Guard'}},
 ]
 
 export default {

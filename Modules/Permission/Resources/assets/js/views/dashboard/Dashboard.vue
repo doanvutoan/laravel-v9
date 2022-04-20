@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-import PageComponent from "../components/PageComponent";
+import PageComponent from "../layouts/PageComponent";
 </script>

@@ -21,11 +21,13 @@ Route::prefix('permission')
     ->group(function () {
 
         Route::middleware('auth:sanctum')->group(function () {
+
             Route::get('/info',function (Request $request){
                 //auto login auth yes
                 dump($request->user());
                 dump(auth()->user());
             });
+
         });
 
     });

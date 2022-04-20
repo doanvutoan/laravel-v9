@@ -58,7 +58,7 @@
 
 <script setup>
 import {LockClosedIcon} from '@heroicons/vue/solid';
-import store from '../store';
+import store from '../../store-vuex';
 import {useRouter} from 'vue-router';
 import {ref} from 'vue';
 

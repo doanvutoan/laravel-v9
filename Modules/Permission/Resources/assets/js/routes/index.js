@@ -1,10 +1,15 @@
 import {createRouter, createWebHistory} from "vue-router";
-import DefaultLayout from "../components/DefaultLayout";
-import AuthLayout from "../components/AuthLayout";
-import Dashboard from "../views/Dashboard";
-import Login from "../views/Login";
-import Notify from "../views/Notify";
-import store from "../store";
+import DefaultLayout from "../views/layouts/DefaultLayout";
+import AuthLayout from "../views/layouts/AuthLayout";
+import {DashboardV} from "../views/dashboard";
+import {LoginV} from "../views/auth";
+import {NotifyListV} from "../views/notify";
+import {
+  GuardListV,
+  GuardCreateV,
+  GuardViewV
+} from "../views/guard";
+import store from "../store-vuex";
 
 const prefix = '/permission';
 
@@ -17,8 +22,11 @@ const routes = [
       requiresAuth: true
     },
     children: [
-      {path: prefix+'/dashboard', name: 'Dashboard', component: Dashboard},
-      {path: prefix+'/notify', name: 'Notify', component: Notify},
+      {path: prefix+'/dashboard', name: 'Dashboard', component: DashboardV},
+      {path: prefix+'/notify', name: 'Notify', component: NotifyListV},
+      {path: prefix+'/guard', name: 'Guard', component: GuardListV},
+      {path: prefix+'/guard/create', name: 'GuardCreate', component: GuardCreateV},
+      {path: prefix+'/guard/:id', name: 'GuardView', component: GuardViewV},
     ]
   },
   {
@@ -31,7 +39,7 @@ const routes = [
       {
         path: prefix+'/login',
         name: 'Login',
-        component: Login
+        component: LoginV
       },
     ]
   },

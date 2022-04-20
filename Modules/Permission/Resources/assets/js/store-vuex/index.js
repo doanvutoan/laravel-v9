@@ -1,5 +1,23 @@
 import {createStore} from 'vuex';
-import axiosClient from "../axios";
+import axiosClient from "../helper/axios";
+
+const tmpGuard = [
+  {
+    'id':1,
+    'user_id':1,
+    'guard_name':'web'
+  },
+  {
+    'id':2,
+    'user_id':1,
+    'guard_name':'admin'
+  },
+  {
+    'id':3,
+    'user_id':2,
+    'guard_name':'writer'
+  }
+];
 
 // Create a new store instance.
 const store = createStore({
@@ -7,6 +25,7 @@ const store = createStore({
     user: {
       data: {},
       token: sessionStorage.getItem('TOKEN'),
+      guard:[...tmpGuard],
     }
   },
   getters: {},

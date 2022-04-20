@@ -1,16 +1,14 @@
 import {createRouter, createWebHistory} from "vue-router";
+import store from "../store-vuex";
+/*load views layout*/
 import DefaultLayout from "../views/layouts/DefaultLayout";
 import AuthLayout from "../views/layouts/AuthLayout";
 import {DashboardV} from "../views/dashboard";
 import {LoginV} from "../views/auth";
 import {NotifyListV} from "../views/notify";
-import {
-  GuardListV,
-  GuardCreateV,
-  GuardViewV
-} from "../views/guard";
-import store from "../store-vuex";
+import {GuardListV,GuardCreateV,GuardViewV} from "../views/guard";
 
+/*setup default*/
 const prefix = '/permission';
 
 const routes = [
@@ -50,6 +48,7 @@ const router = createRouter({
   routes,
 })
 
+/*middleware before direct to router*/
 router.beforeEach( (to, from, next) => {
   if (to.meta.requiresAuth && !store.state.user.token) {
     next({name: 'Login'})

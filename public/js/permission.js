@@ -19576,13 +19576,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
-/* harmony import */ var _views_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/layouts/DefaultLayout */ "./Resources/assets/js/views/layouts/DefaultLayout.vue");
-/* harmony import */ var _views_layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/layouts/AuthLayout */ "./Resources/assets/js/views/layouts/AuthLayout.vue");
-/* harmony import */ var _views_dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../views/dashboard */ "./Resources/assets/js/views/dashboard/index.js");
-/* harmony import */ var _views_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../views/auth */ "./Resources/assets/js/views/auth/index.js");
-/* harmony import */ var _views_notify__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/notify */ "./Resources/assets/js/views/notify/index.js");
-/* harmony import */ var _views_guard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../views/guard */ "./Resources/assets/js/views/guard/index.js");
-/* harmony import */ var _store_vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../store-vuex */ "./Resources/assets/js/store-vuex/index.js");
+/* harmony import */ var _store_vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store-vuex */ "./Resources/assets/js/store-vuex/index.js");
+/* harmony import */ var _views_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../views/layouts/DefaultLayout */ "./Resources/assets/js/views/layouts/DefaultLayout.vue");
+/* harmony import */ var _views_layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../views/layouts/AuthLayout */ "./Resources/assets/js/views/layouts/AuthLayout.vue");
+/* harmony import */ var _views_dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../views/dashboard */ "./Resources/assets/js/views/dashboard/index.js");
+/* harmony import */ var _views_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/auth */ "./Resources/assets/js/views/auth/index.js");
+/* harmony import */ var _views_notify__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../views/notify */ "./Resources/assets/js/views/notify/index.js");
+/* harmony import */ var _views_guard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../views/guard */ "./Resources/assets/js/views/guard/index.js");
+
+
+/*load views layout*/
 
 
 
@@ -19590,35 +19593,36 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+/*setup default*/
 
 var prefix = '/permission';
 var routes = [{
   path: prefix + '/',
   redirect: prefix + '/dashboard',
-  component: _views_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_0__["default"],
+  component: _views_layouts_DefaultLayout__WEBPACK_IMPORTED_MODULE_1__["default"],
   meta: {
     requiresAuth: true
   },
   children: [{
     path: prefix + '/dashboard',
     name: 'Dashboard',
-    component: _views_dashboard__WEBPACK_IMPORTED_MODULE_2__.DashboardV
+    component: _views_dashboard__WEBPACK_IMPORTED_MODULE_3__.DashboardV
   }, {
     path: prefix + '/notify',
     name: 'Notify',
-    component: _views_notify__WEBPACK_IMPORTED_MODULE_4__.NotifyListV
+    component: _views_notify__WEBPACK_IMPORTED_MODULE_5__.NotifyListV
   }, {
     path: prefix + '/guard',
     name: 'Guard',
-    component: _views_guard__WEBPACK_IMPORTED_MODULE_5__.GuardListV
+    component: _views_guard__WEBPACK_IMPORTED_MODULE_6__.GuardListV
   }, {
     path: prefix + '/guard/create',
     name: 'GuardCreate',
-    component: _views_guard__WEBPACK_IMPORTED_MODULE_5__.GuardCreateV
+    component: _views_guard__WEBPACK_IMPORTED_MODULE_6__.GuardCreateV
   }, {
     path: prefix + '/guard/:id',
     name: 'GuardView',
-    component: _views_guard__WEBPACK_IMPORTED_MODULE_5__.GuardViewV
+    component: _views_guard__WEBPACK_IMPORTED_MODULE_6__.GuardViewV
   }]
 }, {
   path: prefix + '/auth',
@@ -19627,23 +19631,25 @@ var routes = [{
   meta: {
     isGuest: true
   },
-  component: _views_layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_1__["default"],
+  component: _views_layouts_AuthLayout__WEBPACK_IMPORTED_MODULE_2__["default"],
   children: [{
     path: prefix + '/login',
     name: 'Login',
-    component: _views_auth__WEBPACK_IMPORTED_MODULE_3__.LoginV
+    component: _views_auth__WEBPACK_IMPORTED_MODULE_4__.LoginV
   }]
 }];
 var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_7__.createRouter)({
   history: (0,vue_router__WEBPACK_IMPORTED_MODULE_7__.createWebHistory)(),
   routes: routes
 });
+/*middleware before direct to router*/
+
 router.beforeEach(function (to, from, next) {
-  if (to.meta.requiresAuth && !_store_vuex__WEBPACK_IMPORTED_MODULE_6__["default"].state.user.token) {
+  if (to.meta.requiresAuth && !_store_vuex__WEBPACK_IMPORTED_MODULE_0__["default"].state.user.token) {
     next({
       name: 'Login'
     });
-  } else if (_store_vuex__WEBPACK_IMPORTED_MODULE_6__["default"].state.user.token && to.meta.isGuest) {
+  } else if (_store_vuex__WEBPACK_IMPORTED_MODULE_0__["default"].state.user.token && to.meta.isGuest) {
     next({
       name: 'Dashboard'
     });

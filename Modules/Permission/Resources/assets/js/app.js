@@ -1,6 +1,6 @@
 
 import {createApp} from 'vue';
-import store from './store-vuex';
+import store from './controllers';
 import router from './routes'
 import app from './index';
 

@@ -22,11 +22,13 @@ Route::prefix('permission')
 
         Route::middleware('auth:sanctum')->group(function () {
 
+            Route::apiResource('guards', 'Api\GuardController');
+
             Route::get('/info',function (Request $request){
                 //auto login auth yes
                 dump($request->user());
                 dump(auth()->user());
-            });
+            })->name('info');
 
         });
 

@@ -58,7 +58,7 @@
 
 <script setup>
 import {LockClosedIcon} from '@heroicons/vue/solid';
-import store from '../../store-vuex';
+import store from '../../controllers';
 import {useRouter} from 'vue-router';
 import {ref} from 'vue';
 
@@ -72,7 +72,7 @@ let errorMsg = ref('');
 
 function login(ev) {
   ev.preventDefault();
-  store.dispatch('login', user)
+  store.dispatch('authController/login', user)
     .then(() => {
       route.push({
         name: 'Dashboard'

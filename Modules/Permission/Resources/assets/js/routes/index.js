@@ -1,5 +1,5 @@
 import {createRouter, createWebHistory} from "vue-router";
-import store from "../store-vuex";
+import store from "../controllers";
 /*load views layout*/
 import DefaultLayout from "../views/layouts/DefaultLayout";
 import AuthLayout from "../views/layouts/AuthLayout";
@@ -50,9 +50,9 @@ const router = createRouter({
 
 /*middleware before direct to router*/
 router.beforeEach( (to, from, next) => {
-  if (to.meta.requiresAuth && !store.state.user.token) {
+  if (to.meta.requiresAuth && !store.state.authController.user.token) {
     next({name: 'Login'})
-  } else if (store.state.user.token && to.meta.isGuest) {
+  } else if (store.state.authController.user.token && to.meta.isGuest) {
     next({name: 'Dashboard'});
   } else {
     next();

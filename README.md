@@ -33,4 +33,7 @@
 - chạy riêng xuất file css: npx tailwindcss -i .\Resources\assets\sass\input.css -o .\Resources\assets\sass\output.css --watch
 - form login kèm theo hiển thị error giao diện
 
+- khi script none setup thì sử dụng export default
+- khi có setup script thì function viết ra ngoài
+
 

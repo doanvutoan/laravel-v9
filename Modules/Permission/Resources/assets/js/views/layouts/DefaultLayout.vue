@@ -134,7 +134,7 @@ export default {
     const store = useStore();
     const router = useRouter();
     function logout(){
-      store.dispatch('logout')
+      store.dispatch('authController/logout')
       .then(()=>{
         router.push({
           name: 'Login'

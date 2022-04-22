@@ -11,9 +11,23 @@
         </router-link>
       </div>
     </template>
+    <div>
+      <button type="button" @click="call">run test</button>
+    </div>
   </PageComponent>
 </template>
 
-<script setup>
+<script>
 import PageComponent from "../layouts/PageComponent";
+
+export default {
+  components: {
+    PageComponent
+  },
+  computed: {
+  },
+  methods: {
+  },
+
+}
 </script>
